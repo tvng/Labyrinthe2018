@@ -132,24 +132,45 @@ public class Labyrinthe {
      */
 	public void autoMove() throws ImpossibleMoveException {
         int dir;
+        boolean bool=false;
         do {
             Random r = new Random();
             dir = r.nextInt(4);
+            
             switch (dir) {
                 case 0: // haut
-                    posY--;
+                    
+                    if (posY-1>=0)
+                    {   
+                        posY--;
+                        bool=true;
+                    }
                     break;
                 case 1: // bas
-                    posY++;
+                    
+                    if (posY+1<tailleY)
+                    {
+                        posY++;
+                        bool=true;
+                    }
                     break;
                 case 2: // droite
-                    posX++;
+                    if (posX+1<tailleX)
+                    { 
+                        posX++;
+                        bool=true;
+                    }
+                    
                     break;
                 case 3: // gauche
-                    posX--;
+                    if (posX-1>=0)
+                    {   
+                        posX--;
+                        bool=true;
+                    }
                     break;
             }
-        } while (posX < 0 || posX >= tailleX || posY < 0 || posY >= tailleY);
+        } while (bool==false);
         
         // si la case pas visitée, s'y déplacer
         if (!getCase(posY, posX).getVisited()) {

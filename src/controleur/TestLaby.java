@@ -7,7 +7,6 @@ package controleur;
 import java.io.File;
 import modele.*;
 import vue.LabyConsole;
-
 import javax.swing.*; //import graphic library
 import java.awt.*;
 
